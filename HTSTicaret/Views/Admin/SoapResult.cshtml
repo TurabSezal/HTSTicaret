@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "SoapResult";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br /><br />
+<br /><br />
+<br /><br />
+<br /><br />
+
+
+<div id="soap-result">
+    @if (Model != null && Model.SoapResult != null)
+    {
+        // @Model.SoapResult değeri kullanılabilir
+        Model.SoapResult = "My Soap Result";
+        <p>@Model.SoapResult</p>
+    }
+</div>
+

@@ -1,0 +1,39 @@
+﻿
+@model IEnumerable <HTSTicaret.Models.Marka>
+
+<div class="box">
+    <div class="container">
+        <div class="tesla-carousel" data-tesla-plugin="carousel" data-tesla-container=".tesla-carousel-items" data-tesla-item=">div" data-tesla-autoplay="false" data-tesla-rotate="false">
+            <div class="site-title">
+                <ul class="wrapper-arrows">
+                    <li><i class="icon-517 prev" title="left arrow"></i></li>
+                    <li><i class="icon-501 next" title="right arrow"></i></li>
+                </ul>
+                <div class="site-inside">
+                    <span>Markalar</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="tesla-carousel-items">
+
+                    @foreach (var resim in Model)
+                    {
+
+                    }
+
+                    <div class="col-md-2 col-xs-6"><a href="#"><img src="~/htsresim/Apple_logo_black.svg.png" alt="brand" /></a></div>
+                    <div class="col-md-2 col-xs-6"><a href="#"><img src="~/htsresim/lenovoo.jpg" alt="brand" /></a></div>
+                    <div class="col-md-2 col-xs-6"><a href="#"><img src="~/htsresim/logots.png" alt="brand" /></a></div>
+                    <div class="col-md-2 col-xs-6"><a href="#"><img src="~/htsresim/monster.jpg" alt="brand" /></a></div>
+                    <div class="col-md-2 col-xs-6"><a href="#"><img src="~/htsresim/MTM.png" alt="brand" /></a></div>
+                    <div class="col-md-2 col-xs-6"><a href="#"><img src="/content/front/files/images/partners/1.png" alt="brand" /></a></div>
+                    <div class="col-md-2 col-xs-6"><a href="#"><img src="/content/front/files/images/partners/2.png" alt="brand" /></a></div>
+                    <div class="col-md-2 col-xs-6"><a href="#"><img src="/content/front/files/images/partners/3.png" alt="brand" /></a></div>
+                    <div class="col-md-2 col-xs-6"><a href="#"><img src="/content/front/files/images/partners/4.png" alt="brand" /></a></div>
+                    <div class="col-md-2 col-xs-6"><a href="#"><img src="/content/front/files/images/partners/5.png" alt="brand" /></a></div>
+                    <div class="col-md-2 col-xs-6"><a href="#"><img src="/content/front/files/images/partners/6.png" alt="brand" /></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+﻿
+@model IEnumerable<HTSTicaret.Models.Urun>
+
+<div class="box">
+    <div class="container">
+        <div class="tesla-carousel" data-tesla-plugin="carousel" data-tesla-container=".tesla-carousel-items" data-tesla-item=">div" data-tesla-autoplay="false" data-tesla-rotate="false">
+            <div class="site-title">
+                <ul class="wrapper-arrows">
+                    <li><i class="icon-517 prev" title="left arrow"></i></li>
+                    <li><i class="icon-501 next" title="right arrow"></i></li>
+                </ul>
+                <div class="site-inside"><span>Ürünler</span></div>
+            </div>
+            <div class="row">
+                <div class="tesla-carousel-items">
+
+                    @foreach (var urun in Model)
+                    {
+                        <div class="col-md-4 col-xs-10">
+                            <div class="product">
+                                <div class="product-cover">
+                                    <span class="product-action">
+
+                                    </span>
+                                    <br/>
+                                        <div class="product-cover-hover"><span style="resize:block"><a href="/Home/UrunDetay/@urun.Adi">Görüntüler</a></span></div>
+                                        @if (urun.Resim.Count > 0)
+                                        {
+                                            <img src="@urun.Resim.FirstOrDefault(x=>x.Varsayilan==true).OrtaYol" alt="product name" />
+                                        }
+                                    
+                                </div>
+                                <div class="product-details">
+                                    <h1><a href="/Home/UrunDetay/@urun.Adi">@urun.Adi</a></h1>
+                                    <p>@urun.Aciklama</p>
+                                    <div class="product-price">
+                                        <a href="/Home/SepeteAt/@urun.Id">
+                                            <i class="icon-257" title="add to cart"></i>
+                                        </a>
+                                        
+                                        @urun.SatisFiyati
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    }
+
+
+                </div>
+        </div>
+    </div>
+</div>
