@@ -17,7 +17,6 @@ namespace HTSTicaret.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Urun()
         {
-            this.Resim = new HashSet<Resim>();
             this.SatisDetay = new HashSet<SatisDetay>();
             this.UrunOzellik = new HashSet<UrunOzellik>();
         }
@@ -29,12 +28,11 @@ namespace HTSTicaret.Models
         public string SatisFiyati { get; set; }
         public Nullable<int> KategoriID { get; set; }
         public Nullable<int> MarkaID { get; set; }
-        public Nullable<System.DateTime> IslemZamani { get; set; }
+        public Nullable<int> ResimID { get; set; }
     
         public virtual Kategori Kategori { get; set; }
         public virtual Marka Marka { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Resim> Resim { get; set; }
+        public virtual Resim Resim { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SatisDetay> SatisDetay { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

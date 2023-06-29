@@ -273,6 +273,7 @@
     <Content Include="Content\MarkaResim\2e26e733-08f1-42a0-b8c8-68676606ab40.png" />
     <Content Include="Content\MarkaResim\5dcfba40-88af-47b1-9e3d-77803e3e4436.ico" />
     <Content Include="Content\MarkaResim\unnamed.jpg" />
+    <Content Include="Content\Site.css" />
     <Content Include="Content\template_content\404.html" />
     <Content Include="Content\template_content\500.html" />
     <Content Include="Content\template_content\advanced_form_components.html" />
@@ -2157,6 +2158,9 @@
     <Content Include="Content\web\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\web\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\web\fonts\FontAwesome.otf" />
+    <Content Include="Content\front\Files\css\fonts\icomoon.eot" />
+    <Content Include="Content\front\Files\css\fonts\icomoon.ttf" />
+    <Content Include="Content\front\Files\css\fonts\icomoon.woff" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -2164,9 +2168,6 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="Content\front\Files\css\fonts\icomoon.eot" />
-    <Content Include="Content\front\Files\css\fonts\icomoon.ttf" />
-    <Content Include="Content\front\Files\css\fonts\icomoon.woff" />
     <None Include="packages.config" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\KategoriEkle.cshtml" />
@@ -2201,6 +2202,11 @@
     <Content Include="Views\Security\Verify.cshtml" />
     <Content Include="Views\Shared\AdminLayout.cshtml" />
     <Content Include="Views\Shared\SiteLayout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Admin\UrunGuncelle.cshtml" />
+    <Content Include="Views\Admin\MarkaGuncelle.cshtml" />
+    <Content Include="Views\Admin\KategoriGuncelle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2211,6 +2217,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\template_content\assets\jquery-file-upload\server\php\files\thumbnail\" />
+    <Folder Include="Content\UrunResim\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

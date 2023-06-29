@@ -19,6 +19,7 @@ namespace HTSTicaret.Models
         {
             this.Kategori = new HashSet<Kategori>();
             this.Marka = new HashSet<Marka>();
+            this.Urun = new HashSet<Urun>();
         }
     
         public int Id { get; set; }
@@ -33,6 +34,7 @@ namespace HTSTicaret.Models
         public virtual ICollection<Kategori> Kategori { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Marka> Marka { get; set; }
-        public virtual Urun Urun { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Urun> Urun { get; set; }
     }
 }

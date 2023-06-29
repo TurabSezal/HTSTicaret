@@ -55,17 +55,17 @@
                             <td class="center">@urun.Marka.Adi</td>
 
                             <td>
-                                @if (urun.Marka.Resim == null)
+                                @if (urun.Resim == null)
                                 {
-                                    <a class="delete">
-                                        <i class="icon-muted"></i>
-                                        Resim Mevcut Değil
+                                    <a class="fancybox" rel="group" href="UrunResimEkle">
+                                        <i class="icon-plus"></i>
+                                        Resim Ekle
                                     </a>
                                 }
-                                @if (urun.Marka.Resim != null)
+                                @if (urun.Resim != null)
                                 {
                                     <a class="fancybox" rel="group"
-                                       href="@urun.Marka.Resim.OrtaYol">
+                                       href="@urun.Resim.OrtaYol">
                                         <i class="icon-eye-open"></i>
                                         Göster
                                     </a>
@@ -73,7 +73,7 @@
                             </td>
                             <td>
                                 <a class="edit"
-                                   href="/admin/UrunGuncelle/@urun.Id">
+                                   href="/Admin/UrunGuncelle/@urun.Id">
                                     <i class="icon-pencil"></i>
                                     Düzenle
                                 </a>

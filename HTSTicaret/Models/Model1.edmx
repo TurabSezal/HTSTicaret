@@ -279,7 +279,7 @@
           <Property Name="SatisFiyati" Type="nvarchar" MaxLength="50" />
           <Property Name="KategoriID" Type="int" />
           <Property Name="MarkaID" Type="int" />
-          <Property Name="IslemZamani" Type="date" />
+          <Property Name="ResimID" Type="int" />
         </EntityType>
         <EntityType Name="UrunOzellik">
           <Key>
@@ -495,18 +495,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Resim_Urun">
-          <End Role="Urun" Type="Self.Urun" Multiplicity="0..1" />
-          <End Role="Resim" Type="Self.Resim" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Urun">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Resim">
-              <PropertyRef Name="UrunID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Satis_Kargo">
           <End Role="Kargo" Type="Self.Kargo" Multiplicity="0..1" />
           <End Role="Satis" Type="Self.Satis" Multiplicity="*" />
@@ -588,6 +576,18 @@
             </Principal>
             <Dependent Role="Urun">
               <PropertyRef Name="MarkaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Urun_Resim">
+          <End Role="Resim" Type="Self.Resim" Multiplicity="0..1" />
+          <End Role="Urun" Type="Self.Urun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Urun">
+              <PropertyRef Name="ResimID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -722,10 +722,6 @@
             <End Role="Kategori" EntitySet="Kategori" />
             <End Role="OzellikTip" EntitySet="OzellikTip" />
           </AssociationSet>
-          <AssociationSet Name="FK_Resim_Urun" Association="Self.FK_Resim_Urun">
-            <End Role="Urun" EntitySet="Urun" />
-            <End Role="Resim" EntitySet="Resim" />
-          </AssociationSet>
           <AssociationSet Name="FK_Satis_Kargo" Association="Self.FK_Satis_Kargo">
             <End Role="Kargo" EntitySet="Kargo" />
             <End Role="Satis" EntitySet="Satis" />
@@ -752,6 +748,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Urun_Marka" Association="Self.FK_Urun_Marka">
             <End Role="Marka" EntitySet="Marka" />
+            <End Role="Urun" EntitySet="Urun" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Urun_Resim" Association="Self.FK_Urun_Resim">
+            <End Role="Resim" EntitySet="Resim" />
             <End Role="Urun" EntitySet="Urun" />
           </AssociationSet>
           <AssociationSet Name="FK_UrunOzellik_OzellikDeger" Association="Self.FK_UrunOzellik_OzellikDeger">
@@ -1022,7 +1022,7 @@
           <Property Name="UrunID" Type="Int32" />
           <NavigationProperty Name="Kategori" Relationship="Self.FK_Kategori_Resim" FromRole="Resim" ToRole="Kategori" />
           <NavigationProperty Name="Marka" Relationship="Self.FK_Marka_Resim" FromRole="Resim" ToRole="Marka" />
-          <NavigationProperty Name="Urun" Relationship="Self.FK_Resim_Urun" FromRole="Resim" ToRole="Urun" />
+          <NavigationProperty Name="Urun" Relationship="Self.FK_Urun_Resim" FromRole="Resim" ToRole="Urun" />
         </EntityType>
         <EntityType Name="Satis">
           <Key>
@@ -1084,10 +1084,10 @@
           <Property Name="SatisFiyati" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="KategoriID" Type="Int32" />
           <Property Name="MarkaID" Type="Int32" />
-          <Property Name="IslemZamani" Type="DateTime" Precision="0" />
+          <Property Name="ResimID" Type="Int32" />
           <NavigationProperty Name="Kategori" Relationship="Self.FK_Urun_Kategori" FromRole="Urun" ToRole="Kategori" />
           <NavigationProperty Name="Marka" Relationship="Self.FK_Urun_Marka" FromRole="Urun" ToRole="Marka" />
-          <NavigationProperty Name="Resim" Relationship="Self.FK_Resim_Urun" FromRole="Urun" ToRole="Resim" />
+          <NavigationProperty Name="Resim" Relationship="Self.FK_Urun_Resim" FromRole="Urun" ToRole="Resim" />
           <NavigationProperty Name="SatisDetay" Relationship="Self.FK_SatisDetay_Urun" FromRole="Urun" ToRole="SatisDetay" />
           <NavigationProperty Name="UrunOzellik" Relationship="Self.FK_UrunOzellik_Urun" FromRole="Urun" ToRole="UrunOzellik" />
         </EntityType>
@@ -1356,15 +1356,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Resim_Urun">
-          <End Role="Urun" Type="Self.Urun" Multiplicity="0..1" />
-          <End Role="Resim" Type="Self.Resim" Multiplicity="*" />
+        <Association Name="FK_Urun_Resim">
+          <End Role="Resim" Type="Self.Resim" Multiplicity="0..1" />
+          <End Role="Urun" Type="Self.Urun" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Urun">
+            <Principal Role="Resim">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Resim">
-              <PropertyRef Name="UrunID" />
+            <Dependent Role="Urun">
+              <PropertyRef Name="ResimID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1420,7 +1420,7 @@
           <End Role="aspnet_Roles" Type="Self.aspnet_Roles" Multiplicity="*" />
           <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="Entity" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entity2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="aspnet_Applications" EntityType="Self.aspnet_Applications" />
           <EntitySet Name="aspnet_Membership" EntityType="Self.aspnet_Membership" />
           <EntitySet Name="aspnet_Paths" EntityType="Self.aspnet_Paths" />
@@ -1530,9 +1530,9 @@
             <End Role="OzellikTip" EntitySet="OzellikTip" />
             <End Role="UrunOzellik" EntitySet="UrunOzellik" />
           </AssociationSet>
-          <AssociationSet Name="FK_Resim_Urun" Association="Self.FK_Resim_Urun">
-            <End Role="Urun" EntitySet="Urun" />
+          <AssociationSet Name="FK_Urun_Resim" Association="Self.FK_Urun_Resim">
             <End Role="Resim" EntitySet="Resim" />
+            <End Role="Urun" EntitySet="Urun" />
           </AssociationSet>
           <AssociationSet Name="FK_Satis_SiparisDurum" Association="Self.FK_Satis_SiparisDurum">
             <End Role="SiparisDurum" EntitySet="SiparisDurum" />
@@ -1560,7 +1560,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="B403_eTicaretModelStoreContainer" CdmEntityContainer="Entity">
+        <EntityContainerMapping StorageEntityContainer="B403_eTicaretModelStoreContainer" CdmEntityContainer="Entity2">
           <EntitySetMapping Name="aspnet_Applications">
             <EntityTypeMapping TypeName="B403_eTicaretModel.aspnet_Applications">
               <MappingFragment StoreEntitySet="aspnet_Applications">
@@ -1847,7 +1847,7 @@
                 <ScalarProperty Name="SatisFiyati" ColumnName="SatisFiyati" />
                 <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
                 <ScalarProperty Name="MarkaID" ColumnName="MarkaID" />
-                <ScalarProperty Name="IslemZamani" ColumnName="IslemZamani" />
+                <ScalarProperty Name="ResimID" ColumnName="ResimID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
