@@ -39,7 +39,8 @@ namespace HTSTicaret.WebUI.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult UrunEkle(Urun urn, HttpPostedFileBase fileUpload)
+        public ActionResult UrunEkle(Urun urn,
+            HttpPostedFileBase fileUpload)
         {
             int resimId = -1;
             if (fileUpload != null)
@@ -48,11 +49,11 @@ namespace HTSTicaret.WebUI.Controllers
 
                 int width = Convert.ToInt32
                     (ConfigurationManager.AppSettings
-                    ["UrunWidth"].ToString());
+                    ["MarkaWidth"].ToString());
 
                 int height = Convert.ToInt32
                     (ConfigurationManager.AppSettings
-                    ["UrunHeight"].ToString());
+                    ["MarkaHeight"].ToString());
 
                 string name = "/Content/UrunResim/" +
                     Guid.NewGuid() + Path.GetExtension
@@ -65,7 +66,7 @@ namespace HTSTicaret.WebUI.Controllers
                 rsm.OrtaYol = name;
                 Context.Baglanti.Resim.Add(rsm);
                 Context.Baglanti.SaveChanges();
-                if (rsm.Id != null)
+                if (rsm.Id != 0)
                     resimId = rsm.Id;
             }
             if (resimId != -1)
@@ -148,7 +149,7 @@ namespace HTSTicaret.WebUI.Controllers
                 rsm.OrtaYol = name;
                 Context.Baglanti.Resim.Add(rsm);
                 Context.Baglanti.SaveChanges();
-                if (rsm.Id != null)
+                if (rsm.Id != 0)
                     resimId = rsm.Id;
             }
             if (resimId != -1)
@@ -157,19 +158,25 @@ namespace HTSTicaret.WebUI.Controllers
             Context.Baglanti.SaveChanges();
             return RedirectToAction("Markalar");
         }
-        public ActionResult MarkaSil(int id)
+        public ActionResult MarkaSil(int id,Urun urn)
         {
+            var urun=Context.Baglanti.Urun.FirstOrDefault(u => u.Marka.Id == id);
             var marka=Context.Baglanti.Marka.FirstOrDefault(u=>u.Id== id);
             if (marka!=null)
             {
-                Context.Baglanti.Marka.Remove(marka);
-                Context.Baglanti.SaveChanges();
-            }
-            else
-            {
-                return RedirectToAction("MarkaSil");
+                if (urun==null)
+                {
+                    Context.Baglanti.Marka.Remove(marka);
+                    Context.Baglanti.SaveChanges();
+                    
+                }
+                else
+                {
+                    return View();
+                }
             }
             return RedirectToAction("Markalar");
+
         }
         public ActionResult MarkaGuncelle(int id)
         {
@@ -205,17 +212,21 @@ namespace HTSTicaret.WebUI.Controllers
             Context.Baglanti.SaveChanges();
             return RedirectToAction("Kategoriler");
         }
-        public ActionResult KategoriSil(int id)
+        public ActionResult KategoriSil(int id,Urun urn)
         {
-            var urun=Context.Baglanti.Kategori.FirstOrDefault(x => x.Id == id);
-            if (urun!=null)
+            var urun=Context.Baglanti.Urun.FirstOrDefault(u => u.Kategori.Id == id);
+            var kategori=Context.Baglanti.Kategori.FirstOrDefault(x => x.Id == id);
+            if (kategori != null)
             {
-                Context.Baglanti.Kategori.Remove(urun);
-                Context.Baglanti.SaveChanges();
-            }
-            else
-            {
-                return RedirectToAction("KategoriSil");
+                if (urun == null)
+                {
+                    Context.Baglanti.Kategori.Remove(kategori);
+                    Context.Baglanti.SaveChanges();
+                }
+                else
+                {
+                    return View() ;
+                }
             }
             return RedirectToAction("Kategoriler");
         }
@@ -357,5 +368,8 @@ namespace HTSTicaret.WebUI.Controllers
         //    }
         //    return View();
         //}
+        
+
     }
+    
  }

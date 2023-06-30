@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
+using HTSTicaret.Models;
 using HTSTicaret.WebUI.App_Classes;
 
 namespace HTSTicaret.WebUI.Controllers
@@ -16,7 +14,8 @@ namespace HTSTicaret.WebUI.Controllers
         }
         public PartialViewResult Sepet()
         {
-            return PartialView();
+            var urunler = Context.Baglanti.Urun.AsQueryable();
+            return PartialView(urunler.ToList());
         }
         public PartialViewResult Slider()
         {
@@ -39,6 +38,15 @@ namespace HTSTicaret.WebUI.Controllers
         public ActionResult Hakkimizda()
         {
             return View();
+        }
+        public ActionResult SepeteAt(int id, Urun urn)
+        {
+            var urun = Context.Baglanti.Urun.FirstOrDefault(u => u.Id == id);
+            if (urun != null)
+            {
+                SepeteAt(id, urn);
+            }
+            return RedirectToAction("Index");
         }
 
     }

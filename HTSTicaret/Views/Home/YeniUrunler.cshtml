@@ -22,13 +22,13 @@
                                     <span class="product-action">
 
                                     </span>
-                                    <br/>
-                                        <div class="product-cover-hover"><span style="resize:block"><a href="/Home/UrunDetay/@urun.Adi">Görüntüler</a></span></div>
-                                        @if (urun.ResimID!=null)
-                                        {
-                                            <img src="@urun.Marka.Resim.OrtaYol" alt="product name" />
-                                        }
-                                    
+                                    <br />
+                                    <div class="product-cover-hover"><span style="resize:block"><a href="/Home/UrunDetay/@urun.Adi">Görüntüler</a></span></div>
+                                    @if (urun.ResimID != null)
+                                    {
+                                        <img src="@urun.Resim.OrtaYol" alt="product name" />
+                                    }
+
                                 </div>
                                 <div class="product-details">
                                     <h1><a href="/Home/UrunDetay/@urun.Adi">@urun.Adi</a></h1>

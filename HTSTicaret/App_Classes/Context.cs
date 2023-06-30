@@ -5,12 +5,12 @@ namespace HTSTicaret.WebUI.App_Classes
 {
     public class Context
     {
-		private static Entity2 baglanti;
+		private static Entities1 baglanti;
 
-		public static Entity2 Baglanti
+		public static Entities1 Baglanti
 		{
 			get { if(baglanti == null )
-					baglanti= new Entity2();
+					baglanti= new Entities1();
 				return baglanti;
 			}
 			set { baglanti = value; }

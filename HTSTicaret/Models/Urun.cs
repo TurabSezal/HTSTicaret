@@ -25,7 +25,7 @@ namespace HTSTicaret.Models
         public string Adi { get; set; }
         public string Aciklama { get; set; }
         public Nullable<decimal> AlisFiyati { get; set; }
-        public string SatisFiyati { get; set; }
+        public Nullable<decimal> SatisFiyati { get; set; }
         public Nullable<int> KategoriID { get; set; }
         public Nullable<int> MarkaID { get; set; }
         public Nullable<int> ResimID { get; set; }

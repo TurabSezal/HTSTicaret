@@ -1,24 +1,38 @@
-﻿
+﻿@model IEnumerable<HTSTicaret.Models.Urun>
 
+@*@{
+        List<HTSTicaret.Models.Urun> urunListesi = Model;
+        decimal? toplamSatisFiyati = 0;
+        if (urunListesi != null)
+        {
+            foreach (var urun in urunListesi)
+            {
+                if (urun.SatisFiyati != null)
+                {
+                    toplamSatisFiyati += urun.SatisFiyati;
+                }
+            }
+        }
+    }*@
 <div class="cart-all">
-    <i class="icon-19" title="19"></i>TL (35000)
+    <i class="icon-19" title="19"></i>
+    <span></span>TL
     <div class="inside-cart">
-        <p>2 products in the shopping bag</p>
-        <ul>
-            <li>
-                <div class="inside-cart-image"><img src="~/htsresim/indir.png" alt="product name" /></div>
-                <button>x</button>
-                <a href="product.html">Lenova Laptop</a>
-                <p>Fiyatı 20000TL</p>
-                <p></p>
-            </li>
-            <li>
-                <div class="inside-cart-image"><img src="~/htsresim/iphone-14-pro-max-colors.png" alt="product name" /></div>
-                <button>x</button>
-                <a href="product.html">İphone 14</a>
-                <p>Fiyatı 15000TL</p>
-                <p>Q</p>
-            </li>
+        <ul class="product-list">
+            @foreach (var urun in Model)
+            {
+                <li>
+                    <div class="product-item">
+                        <a href="UrunDetay/@urun.Id">
+                            <img src="@urun.Resim.OrtaYol" alt="Ürün Resmi" />
+                        </a>
+                        <div class="product-info">
+                            <a href="UrunDetay/@urun.Id" class="product-name">@urun.Adi</a>
+                            <p class="product-price">@urun.SatisFiyati</p>
+                        </div>
+                    </div>
+                </li>
+            }
         </ul>
     </div>
 </div>
