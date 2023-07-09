@@ -1,8 +1,7 @@
-﻿
-using HTSTicaret.Models;
+﻿using HTSTicaret.Models;
 using HTSTicaret.WebUI.App_Classes;
 using System;
-using System.Data.SqlClient;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace HTSTicaret.Controllers
@@ -14,6 +13,7 @@ namespace HTSTicaret.Controllers
         [HttpGet]
         public ActionResult Login()
         {
+            
             return View();
         }
 
@@ -26,29 +26,29 @@ namespace HTSTicaret.Controllers
         [HttpPost]
         public ActionResult Verify(Kargo acc)
         {
-
             string email = acc.Email;
             string password = acc.Password;
 
             try
             {
-                using (SqlConnection con = new SqlConnection(connectionString))
+                using (var context = new Entities1())
                 {
-                    con.Open();
-                    using (SqlCommand com = new SqlCommand("SELECT * FROM dbo.Kargo WHERE Email=@Email AND Password=@Password", con))
-                    {
-                        com.Parameters.AddWithValue("@Email", email);
-                        com.Parameters.AddWithValue("@Password", password);
+                    var user = context.Kargo.FirstOrDefault(u => u.Email == email && u.Password == password);
 
-                        using (SqlDataReader dr = com.ExecuteReader())
+                    if (user != null)
+                    {
+                        SetLoggedInUser(email);
+                        if (user.Identy == 2)
                         {
-                            if (dr.Read())
-                            {
-                                return RedirectToAction("index", "Admin");
-                            }
+                            return RedirectToAction("Index", "Admin");
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Home");
                         }
                     }
                 }
+
                 ViewBag.ErrorMessage = "Geçersiz e-posta veya şifre.";
                 return View("Verify");
             }
@@ -62,9 +62,30 @@ namespace HTSTicaret.Controllers
         [HttpPost]
         public ActionResult Kaydet(Kargo krg)
         {
-            Context.Baglanti.Kargo.Add(krg);
-            Context.Baglanti.SaveChanges();
+            using (var context = new Entities1()) 
+            {
+                context.Kargo.Add(krg);
+                context.SaveChanges();
+            }
+
             return RedirectToAction("Login");
         }
+
+        public ActionResult Logout()
+        {
+            ClearLoggedInUser();
+            return RedirectToAction("Login");
+        }
+
+        private void SetLoggedInUser(string email)
+        {
+            Session["LoggedInUser"] = email;
+        }
+
+        private void ClearLoggedInUser()
+        {
+            Session.Remove("LoggedInUser");
+        }
+
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9e6e9ad49d054d1da1954e72722e3ceb" Name="Diagram1">
+      <Diagram DiagramId="fff8a571a7e84740ac62932fae294c4b" Name="Diagram1">
         <EntityTypeShape EntityType="B403_eTicaretModel.aspnet_Applications" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
         <EntityTypeShape EntityType="B403_eTicaretModel.aspnet_Membership" Width="1.5" PointX="6" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="B403_eTicaretModel.aspnet_Paths" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
@@ -16,7 +16,7 @@
         <EntityTypeShape EntityType="B403_eTicaretModel.aspnet_Users" Width="1.5" PointX="8.25" PointY="14.375" IsExpanded="true" />
         <EntityTypeShape EntityType="B403_eTicaretModel.aspnet_WebEvent_Events" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="B403_eTicaretModel.Giris" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="B403_eTicaretModel.Kargo" Width="1.5" PointX="13.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="B403_eTicaretModel.Kargo" Width="1.5" PointX="13.5" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="B403_eTicaretModel.Kategori" Width="1.5" PointX="13.5" PointY="22.875" IsExpanded="true" />
         <EntityTypeShape EntityType="B403_eTicaretModel.Marka" Width="1.5" PointX="13.5" PointY="26.375" IsExpanded="true" />
         <EntityTypeShape EntityType="B403_eTicaretModel.Musteri" Width="1.5" PointX="10.5" PointY="16.25" IsExpanded="true" />
@@ -26,7 +26,7 @@
         <EntityTypeShape EntityType="B403_eTicaretModel.Resim" Width="1.5" PointX="11.25" PointY="22.625" IsExpanded="true" />
         <EntityTypeShape EntityType="B403_eTicaretModel.Satis" Width="1.5" PointX="15.75" PointY="15.875" IsExpanded="true" />
         <EntityTypeShape EntityType="B403_eTicaretModel.SatisDetay" Width="1.5" PointX="18" PointY="16.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="B403_eTicaretModel.SiparisDurum" Width="1.5" PointX="13.5" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="B403_eTicaretModel.SiparisDurum" Width="1.5" PointX="13.5" PointY="19.625" IsExpanded="true" />
         <EntityTypeShape EntityType="B403_eTicaretModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="B403_eTicaretModel.Urun" Width="1.5" PointX="15.75" PointY="23.75" IsExpanded="true" />
         <EntityTypeShape EntityType="B403_eTicaretModel.UrunOzellik" Width="1.5" PointX="20.25" PointY="26.5" IsExpanded="true" />

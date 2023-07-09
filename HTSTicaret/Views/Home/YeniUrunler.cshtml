@@ -1,7 +1,6 @@
 ﻿
 @model IEnumerable<HTSTicaret.Models.Urun>
 
-<div class="box">
     <div class="container">
         <div class="tesla-carousel" data-tesla-plugin="carousel" data-tesla-container=".tesla-carousel-items" data-tesla-item=">div" data-tesla-autoplay="false" data-tesla-rotate="false">
             <div class="site-title">
@@ -23,7 +22,7 @@
 
                                     </span>
                                     <br />
-                                    <div class="product-cover-hover"><span style="resize:block"><a href="/Home/UrunDetay/@urun.Adi">Görüntüler</a></span></div>
+                                    <div class="product-cover-hover"><span style="resize:block"><a href="/Home/UrunDetay/@urun.Id">Görüntüler</a></span></div>
                                     @if (urun.ResimID != null)
                                     {
                                         <img src="@urun.Resim.OrtaYol" alt="product name" />
@@ -37,8 +36,8 @@
                                         <a href="/Home/SepeteAt/@urun.Id">
                                             <i class="icon-257" title="add to cart"></i>
                                         </a>
-                                        
-                                        @urun.SatisFiyati
+
+                                        @(string.Format("{0:N}", urun.SatisFiyati)) TL
                                     </div>
                                 </div>
                             </div>

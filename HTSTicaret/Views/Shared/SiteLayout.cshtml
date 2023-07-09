@@ -2,7 +2,7 @@
 @{
     Layout = null;
 }
-
+@model IEnumerable<HTSTicaret.Models.Kategori>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,12 +23,12 @@
 
     <div class="header">
         <div class="container">
-            
+
             <div class="header-middle-info">
                 <div class="col-md-4">
                     <div class="logo">
-                        <a href="index.html">
-                            <img src="~/htsresim/HTS.png" alt="site logo" />
+                        <a href="~/Home/index">
+                            <img src="~/htsresim/MTM.png" alt="site logo" />
                         </a>
                     </div>
                 </div>
@@ -37,15 +37,11 @@
 
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li><a href="/Security/login"><i class="icon-351" title="Giriş"></i> Giriş Yap</a></li>
-
-                        }
-                        else
-                        {
-                            <li><a href="/Kullanici/Hesabim"><i class="icon-330" title="Hesabım"></i> Hesabım</a></li>
-                            <li><a href="/Kullanici/CikisYap"><i class="icon-351" title="Giriş"></i>Çıkış Yap</a></li>
+                            <li><a href="/Security/Hesabim"><i class="icon-330" title="Hesabım"></i> Hesabım</a></li>
+                            <li><a href="/Security/Logout"><i class="icon-351" title="Giriş"></i>Çıkış Yap</a></li>
                         }
 
+                        <li><a href="/Security/Login"><i class="icon-330" title="Hesabım"></i> Griş Yap</a></li>
 
                     </ul>
                 </div>
@@ -57,10 +53,10 @@
                         <input type="text" class="search-line" placeholder="Ara" name="serch" />
                         <input type="submit" value="" class="search-button" />
                     </form>
-                    @{ 
-                        Html.RenderAction("Sepet", "Home");
+                    @{
+                        Html.RenderAction("SepetGoster", "Home");
                     }
-                    
+
                     <div class="clear"></div>
                 </div>
                 <div class="repsonsive-menu"><i class="icon-406" title="406"></i> Menu</div>
@@ -72,15 +68,30 @@
 
 
 
-                    <li><a href="/admin/Kategoriler">Kategoriler</a></li>
-                    <li><a href="/Home/Hakkimizda">Hakkımızda</a></li>
+                    <li class="menu-item-has-children">
+                        <a href="#">Kategoriler</a>
+                        <ul>
+                            @foreach (var kategori in ViewBag.Kategoriler)
+                            {
+                                <li><a href="/Home/@kategori.Adi">@kategori.Adi</a></li>
+                            }
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="#">Markalar</a>
+                        <ul>
+                            @foreach (var marka in ViewBag.Markalar)
+                            {
+                                <li><a href="/Home/@marka.Adi">@marka.Adi</a></li>
+                            }
+                        </ul>
+                    </li>
                     <li class="menu-item-has-children">
                         <a href="#">Sayfalar</a>
                         <ul>
 
                             <li><a href="/Home/İletisim">İletişim</a></li>
-
-                            <li><a href="/Kullanici/KayitOl">Kayıt Ol</a></li>
+                            <li><a href="/Home/Hakkimizda">Hakkımızda</a></li>
 
                         </ul>
                     </li>
@@ -107,9 +118,6 @@
 
         @{
             Html.RenderAction("Servisler", "Home");
-        }
-        @{
-            Html.RenderAction("Markalar", "Home");
         }
 
 

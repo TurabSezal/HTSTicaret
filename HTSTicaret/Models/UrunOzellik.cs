@@ -9,8 +9,6 @@
 
 namespace HTSTicaret.Models
 {
-    using System;
-    using System.Collections.Generic;
     
     public partial class UrunOzellik
     {

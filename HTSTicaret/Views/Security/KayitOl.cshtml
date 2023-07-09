@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -9,8 +8,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="Mosaddek">
-    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <link rel="shortcut icon" href="img/favicon.png">
 
     <title>Kayıt Ol</title>
@@ -35,34 +32,27 @@
 
     <div class="container">
 
-        <form class="form-signin" action="index">
-            <h2 class="form-signin-heading">registration now</h2>
+        <form class="form-signin" action="@Url.Action("Kaydet", "Security")" method="post">
+            @Html.AntiForgeryToken()
+            <h2 class="form-signin-heading">Şimdi Kayıt Ol</h2>
             <div class="login-wrap">
-                <p>Kişisel Bilgileriniz Giriniz</p>
-                <input type="text" class="form-control" placeholder="Kullanıcı Adı" autofocus>
-                <input type="text" class="form-control" placeholder="Email" autofocus>
-                <input type="text" class="form-control" placeholder="Yaşadığın Ülke" autofocus>
-                <div class="radios">
-                    <label class="label_radio col-lg-6 col-sm-6" for="radio-01">
-                        <input name="sample-radio" id="radio-01" value="1" type="radio" checked /> Erkek
-                    </label>
-                    <label class="label_radio col-lg-6 col-sm-6" for="radio-02">
-                        <input name="sample-radio" id="radio-02" value="1" type="radio" /> Kadın
-                    </label>
-                </div>
-
-                <p> Giriş Bilgilerinizi Giriniz</p>
-                <input type="text" class="form-control" placeholder="Kullanıcı Adı" autofocus>
-                <input type="password" class="form-control" placeholder="Şifre">
-                <input type="password" class="form-control" placeholder="Tekrar Şifre">
+                <p>Kişisel Bilgilerinizi Giriniz</p>
+                <input type="text" class="form-control" name="Ad" placeholder="Ad" autofocus>
+                <input type="text" class="form-control" name="Soyad" placeholder="Soyad" autofocus>
+                <input type="text" class="form-control" name="KullaniciAdi" placeholder="KullaniciAdi" autofocus>
+                <input type="password" class="form-control" name="Password" placeholder="Password" autofocus>
+                <input type="text" class="form-control" name="TcNo" placeholder="TcNo" autofocus>
+                <input type="text" class="form-control" name="Telefon" placeholder="Telefon" autofocus>
+                <input type="text" class="form-control" name="Email" placeholder="Email">
+                <input type="text" class="form-control" name="Adres" placeholder="Adres" autofocus>
                 <label class="checkbox">
-                    <input type="checkbox" value="agree this condition"> Kullanıcı Sözleşmesini Kabul Ediyorum
+                    <input type="checkbox" name="SozlesmeKabul" value="true"> Kullanıcı Sözleşmesini Kabul Ediyorum
                 </label>
                 <button class="btn btn-lg btn-login btn-block" type="submit">Kaydet</button>
 
                 <div class="registration">
                     Hesabın Varsa
-                    <a class="" href="login">
+                    <a class="" href="@Url.Action("Login", "Security")">
                         Giriş Yap
                     </a>
                 </div>
@@ -76,4 +66,3 @@
 
 </body>
 </html>
-

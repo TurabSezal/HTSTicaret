@@ -2192,8 +2192,7 @@
     <Content Include="Views\Admin\UrunSil.cshtml" />
     <Content Include="Views\Home\Hakkimizda.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Markalar.cshtml" />
-    <Content Include="Views\Home\Sepet.cshtml" />
+    <Content Include="Views\Home\SepetGoster.cshtml" />
     <Content Include="Views\Home\Servisler.cshtml" />
     <Content Include="Views\Home\Slider.cshtml" />
     <Content Include="Views\Home\YeniUrunler.cshtml" />
@@ -2207,6 +2206,8 @@
     <Content Include="Views\Admin\UrunGuncelle.cshtml" />
     <Content Include="Views\Admin\MarkaGuncelle.cshtml" />
     <Content Include="Views\Admin\KategoriGuncelle.cshtml" />
+    <Content Include="Views\Home\SepettenCikar.cshtml" />
+    <Content Include="Views\Home\UrunDetay.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

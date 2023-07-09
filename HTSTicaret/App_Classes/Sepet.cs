@@ -39,19 +39,27 @@ namespace HTSTicaret.WebUI.App_Classes
             else
                 urunler.Add(si);
         }
+        public void SepetCikar(SepetItem si)
+        {
+            if (urunler.Any(x => x.urun.Id == si.urun.Id))
+                urunler.FirstOrDefault(x => x.urun.Id == si.urun.Id).adet--;
+            else
+                urunler.Remove(si);
+        }
     }
+
 
     public class SepetItem
     {
         public Urun urun { get; set; }
         public int adet { get; set; }
         public double Indirim { get; set; }
-        //public decimal Tutar
-        //{
-        //    get
-        //    {
-        //        return urun.SatisFiyati * adet * (decimal)(1 - Indirim);
-        //    }
-        //}
+        public decimal Tutar
+        {
+            get
+            {
+                return (decimal)(urun.SatisFiyati * adet);
+            }
+        }
     }
 }

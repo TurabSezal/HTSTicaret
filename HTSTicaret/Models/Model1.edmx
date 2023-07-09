@@ -157,6 +157,7 @@
           <Property Name="Telefon" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="Adres" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Identy" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Kategori">
           <Key>
@@ -937,6 +938,7 @@
           <Property Name="Telefon" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Adres" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Identy" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Satis" Relationship="Self.FK_Satis_Kargo" FromRole="Kargo" ToRole="Satis" />
         </EntityType>
         <EntityType Name="Kategori">
@@ -1714,6 +1716,7 @@
                 <ScalarProperty Name="Telefon" ColumnName="Telefon" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Identy" ColumnName="Identy" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
