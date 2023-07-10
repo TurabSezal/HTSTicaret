@@ -72,5 +72,20 @@ namespace HTSTicaret.WebUI.Controllers
             var urun = Context.Baglanti.Urun.FirstOrDefault(u => u.Id == id);
             return View(urun);
         }
+        public ActionResult MarkaUrunler(int id)
+        {
+            ViewBag.Kategoriler = Context.Baglanti.Kategori.ToList();
+            ViewBag.Markalar = Context.Baglanti.Marka.ToList();
+            var urunler = Context.Baglanti.Urun.Where(u => u.MarkaID == id).ToList();
+            return View(urunler);
+        }
+        public ActionResult KategoriUrunler(int id)
+        {
+            ViewBag.Kategoriler = Context.Baglanti.Kategori.ToList();
+            ViewBag.Markalar=Context.Baglanti.Marka.ToList() ;
+            var urunler=Context.Baglanti.Urun.Where(u=>u.KategoriID== id).ToList();
+            return View(urunler);
+        }
+
     }
 }

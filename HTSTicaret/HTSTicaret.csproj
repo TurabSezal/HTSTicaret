@@ -2208,6 +2208,8 @@
     <Content Include="Views\Admin\KategoriGuncelle.cshtml" />
     <Content Include="Views\Home\SepettenCikar.cshtml" />
     <Content Include="Views\Home\UrunDetay.cshtml" />
+    <Content Include="Views\Home\MarkaUrunler.cshtml" />
+    <Content Include="Views\Home\KategoriUrunler.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

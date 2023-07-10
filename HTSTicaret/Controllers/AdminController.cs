@@ -77,9 +77,19 @@ namespace HTSTicaret.WebUI.Controllers
         }
         public ActionResult UrunSil(int id)
         {
-            var urun=Context.Baglanti.Urun.FirstOrDefault(u=>u.Id==id);
-            if (urun!=null)
+            var urun = Context.Baglanti.Urun.FirstOrDefault(u => u.Id == id);
+            if (urun != null)
             {
+                var resim = Context.Baglanti.Resim.FirstOrDefault(r => r.Id == urun.ResimID);
+                if (resim != null)
+                {
+                    Context.Baglanti.Resim.Remove(resim);
+                    string filePath = Server.MapPath(resim.OrtaYol);
+                    if (System.IO.File.Exists(filePath))
+                    {
+                        System.IO.File.Delete(filePath);
+                    } 
+                }
                 Context.Baglanti.Urun.Remove(urun);
                 Context.Baglanti.SaveChanges();
             }
@@ -89,6 +99,7 @@ namespace HTSTicaret.WebUI.Controllers
             }
             return RedirectToAction("Urunler");
         }
+
         public ActionResult UrunGuncelle(int id)
         {
             ViewBag.Kategoriler = Context.Baglanti.Kategori.ToList();
@@ -158,20 +169,30 @@ namespace HTSTicaret.WebUI.Controllers
             Context.Baglanti.SaveChanges();
             return RedirectToAction("Markalar");
         }
-        public ActionResult MarkaSil(int id,Urun urn)
+        public ActionResult MarkaSil(int id)
         {
             var urun=Context.Baglanti.Urun.FirstOrDefault(u => u.Marka.Id == id);
             var marka=Context.Baglanti.Marka.FirstOrDefault(u=>u.Id== id);
+            var resim = Context.Baglanti.Resim.FirstOrDefault(x => x.Id == marka.ResimID);
             if (marka!=null)
             {
                 if (urun==null)
                 {
+                    if (resim!=null)
+                    {
+                        Context.Baglanti.Resim.Remove(resim);
+                        string filePath = Server.MapPath(resim.OrtaYol);
+                        if (System.IO.File.Exists(filePath))
+                        {
+                            System.IO.File.Delete(filePath);
+                        }
+                    }
                     Context.Baglanti.Marka.Remove(marka);
                     Context.Baglanti.SaveChanges();
-                    
                 }
                 else
                 {
+                    ModelState.AddModelError("", "Bu markaya ait ürünler mevcut ");
                     return View();
                 }
             }

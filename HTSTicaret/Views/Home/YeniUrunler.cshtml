@@ -1,7 +1,7 @@
 ﻿
 @model IEnumerable<HTSTicaret.Models.Urun>
 
-    <div class="container">
+    <div class="container" style="margin-top:30px">
         <div class="tesla-carousel" data-tesla-plugin="carousel" data-tesla-container=".tesla-carousel-items" data-tesla-item=">div" data-tesla-autoplay="false" data-tesla-rotate="false">
             <div class="site-title">
                 <ul class="wrapper-arrows">
@@ -31,7 +31,14 @@
                                 </div>
                                 <div class="product-details">
                                     <h1><a href="/Home/UrunDetay/@urun.Adi">@urun.Adi</a></h1>
-                                    <p>@urun.Aciklama</p>
+                                    @{
+                                        int maxKarakterSayisi = 110;
+                                        string kisaltmaNoktalari = "..."; // Kısaltmanın sonuna eklemek istediğiniz üç nokta
+                                        string kisaltilmisAciklama = urun.Aciklama.Length > maxKarakterSayisi ? urun.Aciklama.Substring(0, maxKarakterSayisi) + kisaltmaNoktalari : urun.Aciklama;
+                                    }
+
+                                    <p style="height: 40px; overflow: hidden;">@kisaltilmisAciklama</p>
+
                                     <div class="product-price">
                                         <a href="/Home/SepeteAt/@urun.Id">
                                             <i class="icon-257" title="add to cart"></i>
