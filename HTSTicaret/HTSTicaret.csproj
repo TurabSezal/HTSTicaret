@@ -267,6 +267,10 @@
     <Content Include="Content\front\Zeon Documentation\javascript\bootstrap.js" />
     <Content Include="Content\front\Zeon Documentation\javascript\jquery.js" />
     <Content Include="Content\front\Zeon Documentation\javascript\options.js" />
+    <Content Include="Content\login\css\font-awesome.min.css" />
+    <Content Include="Content\login\css\style.css" />
+    <Content Include="Content\login\images\image.jpg" />
+    <Content Include="Content\login\images\tick.png" />
     <Content Include="Content\MarkaResim4055c722-8c66-4499-a4f8-0b60e62e7318.jpeg" />
     <Content Include="Content\MarkaResim55cc905b-fe1d-43c8-bb53-f4b659f3faa8.png" />
     <Content Include="Content\MarkaResim5d82557c-4fbe-44ba-9c4d-979020bbaa4b.jpeg" />
@@ -1801,26 +1805,13 @@
     <Content Include="Content\web\index.html" />
     <Content Include="Content\web\w3layouts-License.txt" />
     <Content Include="Global.asax" />
-    <Content Include="htsimgslider\1920x700-bigstock-LUANG-PRABANG-DEC-Night-Ma-56523128.jpg" />
-    <Content Include="htsimgslider\indir %281%29.jfif" />
-    <Content Include="htsimgslider\indir.jfif" />
     <Content Include="htsimgslider\layerslider3.jpg" />
+    <Content Include="htsresim\favicon.png" />
+    <Content Include="htsresim\logo_transparent.png" />
     <Content Include="htsimgslider\slider-2-1.jpg" />
-    <Content Include="htsresim\299355671_1767798843570126_1790984781350196710_n.jpg" />
-    <Content Include="htsresim\74acffada595e829189eda96abae8bc4.jpg" />
-    <Content Include="htsresim\Apple_logo_black.svg.png" />
-    <Content Include="htsresim\HTS DEVELoper.mp4" />
-    <Content Include="htsresim\HTS DEVELoper.png" />
-    <Content Include="htsresim\HTS.png" />
-    <Content Include="htsresim\indir.png" />
-    <Content Include="htsresim\iphone-14-pro-max-colors.png" />
-    <Content Include="htsresim\lenovoo.jpg" />
+    <Content Include="htsimgslider\sliderr.jpg" />
     <Content Include="htsresim\logots.png" />
-    <Content Include="htsresim\monster.jpg" />
     <Content Include="htsresim\MTM.png" />
-    <Content Include="htsresim\samsung.png" />
-    <Content Include="htsresim\unnamed.jpg" />
-    <Content Include="htsresim\Versace_logo.png" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -2168,6 +2159,11 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\login\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\login\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\login\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\login\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\login\fonts\FontAwesome.otf" />
     <None Include="packages.config" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\KategoriEkle.cshtml" />
@@ -2198,7 +2194,6 @@
     <Content Include="Views\Home\YeniUrunler.cshtml" />
     <Content Include="Views\Security\KayitOl.cshtml" />
     <Content Include="Views\Security\Login.cshtml" />
-    <Content Include="Views\Security\Verify.cshtml" />
     <Content Include="Views\Shared\AdminLayout.cshtml" />
     <Content Include="Views\Shared\SiteLayout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -2210,6 +2205,7 @@
     <Content Include="Views\Home\UrunDetay.cshtml" />
     <Content Include="Views\Home\MarkaUrunler.cshtml" />
     <Content Include="Views\Home\KategoriUrunler.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

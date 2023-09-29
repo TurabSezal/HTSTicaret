@@ -10,7 +10,7 @@
     <title>HTS TİCARET</title>
     <meta name="description" content="Here goes description" />
     <meta name="author" content="author name" />
-    <link rel="shortcut icon" href="/Content/front/files/images/favicon.ico" type="/Content/front/files/image/x-icon" />
+    <link rel="shortcut icon" href="~/htsresim/favicon.png"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
@@ -27,20 +27,16 @@
                 <div class="col-md-4">
                     <div class="logo">
                         <a href="~/Home/index">
-                            <img src="~/htsresim/MTM.png" alt="site logo" />
+                            <img src="~/htsresim/logo_transparent.png" style="width:150px;height:60px" alt="site logo" />
                         </a>
                     </div>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-6">
+                    <br />
                     <ul class="header-middle-account">
-
-                        @if (User.Identity.IsAuthenticated)
-                        {
                             <li><a href="/Security/Hesabim"><i class="icon-330" title="Hesabım"></i> Hesabım</a></li>
                             <li><a href="/Security/Logout"><i class="icon-351" title="Giriş"></i>Çıkış Yap</a></li>
-                        }
-
-                        <li><a href="/Security/Login"><i class="icon-330" title="Hesabım"></i> Griş Yap</a></li>
+                        @*<li><a href="/Security/Login"><i class="icon-330" title="Hesabım"></i> Griş Yap</a></li>*@
 
                     </ul>
                 </div>
@@ -89,7 +85,7 @@
                         <a href="#">Sayfalar</a>
                         <ul>
 
-                            <li><a href="/Home/İletisim">İletişim</a></li>
+                            <li><a href="/Home/Contact">İletişim</a></li>
                             <li><a href="/Home/Hakkimizda">Hakkımızda</a></li>
 
                         </ul>

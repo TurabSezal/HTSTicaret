@@ -41,7 +41,7 @@
             <div class="header-middle-info">
                 <div class="col-md-4">
                     <div class="logo">
-                        <a href="index">
+                        <a href="~/Home/index">
                             <img src="~/htsresim/MTM.png" alt="site logo" />
                         </a>
                     </div>
@@ -52,13 +52,10 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li><a href="/Security/Hesabim"><i class="icon-330" title="Hesabım"></i> Hesabım</a></li>
-                            <li><a href="/Kullanici/CikisYap"><i class="icon-351" title="Giriş"></i>Çıkış Yap</a></li>
-                        }
-                        else
-                        {
-                            <li><a href="/Kullanici/GirisYap"><i class="icon-351" title="Giriş"></i> Giriş Yap</a></li>
+                            <li><a href="/Security/Logout"><i class="icon-351" title="Giriş"></i>Çıkış Yap</a></li>
                         }
 
+                        <li><a href="/Security/Login"><i class="icon-330" title="Hesabım"></i> Griş Yap</a></li>
 
                     </ul>
                 </div>
@@ -67,16 +64,47 @@
             <div class="menu">
                 <div class="search-cart">
                     <form class="search">
-                        <input type="text" class="search-line" placeholder="Search" name="serch" />
+                        <input type="text" class="search-line" placeholder="Ara" name="serch" />
                         <input type="submit" value="" class="search-button" />
                     </form>
-                   
                     <div class="clear"></div>
                 </div>
                 <div class="repsonsive-menu"><i class="icon-406" title="406"></i> Menu</div>
                 <ul>
-                    <li><a href="index">Ana Sayfa</a></li>
-                    <li><a href="contact.html">Hakkımızda</a></li>
+                    <li>
+                        <a href="/Home/Index">AnaSayfa</a>
+
+                    </li>
+
+
+
+                    <li class="menu-item-has-children">
+                        <a href="#">Kategoriler</a>
+                        <ul>
+                            @foreach (var kategori in ViewBag.Kategoriler)
+                            {
+                                <li><a href="/Home/KategoriUrunler/@kategori.Id">@kategori.Adi</a></li>
+                            }
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="#">Markalar</a>
+                        <ul>
+                            @foreach (var marka in ViewBag.Markalar)
+                            {
+                                <li><a href="/Home//MarkaUrunler/@marka.Id">@marka.Adi</a></li>
+                            }
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="#">Sayfalar</a>
+                        <ul>
+
+                            <li><a href="/Home/Contact">İletişim</a></li>
+                            <li><a href="/Home/Hakkimizda">Hakkımızda</a></li>
+
+                        </ul>
+                    </li>
                 </ul>
                 <div class="clear"></div>
             </div>

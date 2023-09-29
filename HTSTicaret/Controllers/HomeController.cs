@@ -13,7 +13,6 @@ namespace HTSTicaret.WebUI.Controllers
             ViewBag.Markalar = Context.Baglanti.Marka.ToList();
             return View();
         }
-
         public PartialViewResult SepetGoster()
         {
             var urunler = Context.Baglanti.Urun.AsQueryable();
@@ -36,14 +35,19 @@ namespace HTSTicaret.WebUI.Controllers
         {
             return PartialView();
         }
-
+        [Authorize]
         public ActionResult Hakkimizda()
         {
             ViewBag.Kategoriler = Context.Baglanti.Kategori.ToList();
             ViewBag.Markalar = Context.Baglanti.Marka.ToList();
             return View();
         }
-
+        public ActionResult Contact()
+        {
+            ViewBag.Kategoriler = Context.Baglanti.Kategori.ToList();
+            ViewBag.Markalar=Context.Baglanti.Marka.ToList();
+            return View();
+        }
         public ActionResult SepeteAt(int id)
         {
             var urun = Context.Baglanti.Urun.FirstOrDefault(u => u.Id == id);
