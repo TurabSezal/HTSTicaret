@@ -15,7 +15,7 @@
                         <div class="product-info">
                             <a href="UrunDetay/@urun.urun.Id" class="product-name">@urun.urun.Adi</a>
                             <p class="product-price">@(string.Format("{0:N}", @urun.urun.SatisFiyati)) TL</p>
-                            <button class="remove-button" onclick="SepettenCikar('@urun.urun.Id')">Çıkar</button>
+                            <button class="remove-button" data-urunid="@urun.urun.Id">Çıkar</button>
                         </div>
                     </div>
                 </li>
@@ -25,21 +25,5 @@
     </div>
 </div>
 
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    function SepettenCikar(urunId) {
-        $.ajax({
-            url: '@Url.Action("SepettenCikar", "Home")',
-            type: 'POST',
-            data: { id: urunId },
-            success: function (result) {
-                // Sepet güncellendiğinde yapılacak işlemler
-                // Örneğin, sepetin yeniden yüklenmesi veya sayfanın güncellenmesi gibi
-                location.reload(); // Sayfayı yenilemek için örnek bir işlem
-            },
-            error: function (xhr, status, error) {
-                // Hata durumunda yapılacak işlemler
-            }
-        });
-    }
-</script>

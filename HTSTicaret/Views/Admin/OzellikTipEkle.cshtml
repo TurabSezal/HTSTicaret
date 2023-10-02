@@ -4,7 +4,6 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-@model IEnumerable<HTSTicaret.WebUI.Models.Kategori>
 
 <br/><br/>
 <br/><br/>
@@ -32,7 +31,7 @@
                              </div>
                          </div>
                          <select class="form-control m-bot15" name="KategoriID">
-                             @foreach (var ktg in Model)
+                             @foreach (var ktg in ViewBag.Kategoriler)
                              {
                                  <option value="@ktg.Id">
                                      @ktg.Adi

@@ -11,14 +11,14 @@ using HTSTicaret.WebUI.App_Classes;
 using static HTSTicaret.WebUI.Models.Class1;
 namespace HTSTicaret.WebUI.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
-        [Authorize]
         public ActionResult Index()
         {
             return View();
         }
-        [Authorize]
+         
         public ActionResult Urunler(string searchName)
         {
             var urunler = Context.Baglanti.Urun.AsQueryable();
@@ -33,14 +33,14 @@ namespace HTSTicaret.WebUI.Controllers
 
             return View(urunler.ToList());
         }
-        [Authorize]
+         
         public ActionResult UrunEkle()
         {
             ViewBag.Kategoriler=Context.Baglanti.Kategori.ToList();
             ViewBag.Markalar=Context.Baglanti.Marka.ToList();
             return View();
         }
-        [Authorize]
+         
         [HttpPost]
         public ActionResult UrunEkle(Urun urn,
             HttpPostedFileBase fileUpload)
@@ -78,7 +78,7 @@ namespace HTSTicaret.WebUI.Controllers
             Context.Baglanti.SaveChanges();
             return RedirectToAction("Urunler");
         }
-        [Authorize]
+         
         public ActionResult UrunSil(int id)
         {
             var urun = Context.Baglanti.Urun.FirstOrDefault(u => u.Id == id);
@@ -103,7 +103,7 @@ namespace HTSTicaret.WebUI.Controllers
             }
             return RedirectToAction("Urunler");
         }
-        [Authorize]
+         
         public ActionResult UrunGuncelle(int id)
         {
             ViewBag.Kategoriler = Context.Baglanti.Kategori.ToList();
@@ -111,7 +111,7 @@ namespace HTSTicaret.WebUI.Controllers
             var urun = Context.Baglanti.Urun.FirstOrDefault(u => u.Id == id);
             return View(urun);
         }
-        [Authorize]
+         
         [HttpPost]
         public ActionResult UrunGuncelle(Urun urn,int id)
         {
@@ -129,17 +129,17 @@ namespace HTSTicaret.WebUI.Controllers
             Context.Baglanti.SaveChanges();
             return RedirectToAction("Urunler");
         }
-        [Authorize]
+         
         public ActionResult Markalar()
         {
             return View(Context.Baglanti.Marka.ToList());
         }
-        [Authorize]
+         
         public ActionResult MarkaEkle()
         {
             return View();
         }
-        [Authorize]
+         
         [HttpPost]
         public ActionResult MarkaEkle(Marka mrk,
             HttpPostedFileBase fileUpload)
@@ -177,7 +177,7 @@ namespace HTSTicaret.WebUI.Controllers
             Context.Baglanti.SaveChanges();
             return RedirectToAction("Markalar");
         }
-        [Authorize]
+         
         public ActionResult MarkaSil(int id)
         {
             var urun=Context.Baglanti.Urun.FirstOrDefault(u => u.Marka.Id == id);
@@ -208,13 +208,13 @@ namespace HTSTicaret.WebUI.Controllers
             return RedirectToAction("Markalar");
 
         }
-        [Authorize]
+         
         public ActionResult MarkaGuncelle(int id)
         {
             var mrk = Context.Baglanti.Marka.FirstOrDefault(u => u.Id == id);
             return View(mrk);
         }
-        [Authorize]
+         
         [HttpPost]
         public ActionResult MarkaGuncelle(Marka mrk, int id)
         {
@@ -228,17 +228,17 @@ namespace HTSTicaret.WebUI.Controllers
             Context.Baglanti.SaveChanges();
             return RedirectToAction("Markalar");
         }
-        [Authorize]
+         
         public ActionResult Kategoriler()
         {
             return View(Context.Baglanti.Kategori.ToList());
         }
-        [Authorize]
+         
         public ActionResult KategoriEkle()
         {
             return View();
         }
-        [Authorize]
+         
         [HttpPost]
         public ActionResult KategoriEkle(Kategori ktg) 
         { 
@@ -246,7 +246,7 @@ namespace HTSTicaret.WebUI.Controllers
             Context.Baglanti.SaveChanges();
             return RedirectToAction("Kategoriler");
         }
-        [Authorize]
+         
         public ActionResult KategoriSil(int id,Urun urn)
         {
             var urun=Context.Baglanti.Urun.FirstOrDefault(u => u.Kategori.Id == id);
@@ -265,14 +265,14 @@ namespace HTSTicaret.WebUI.Controllers
             }
             return RedirectToAction("Kategoriler");
         }
-        [Authorize]
+         
         public ActionResult KategoriGuncelle(int id )
         {
             var ktg = Context.Baglanti.Kategori.FirstOrDefault(u => u.Id == id);
             return View(ktg);
 
         }
-        [Authorize]
+         
         [HttpPost]
         public ActionResult KategoriGuncelle(Kategori ktg,int id)
         {
@@ -285,17 +285,18 @@ namespace HTSTicaret.WebUI.Controllers
             Context.Baglanti.SaveChanges();
             return RedirectToAction("Kategoriler");
         }
-        [Authorize]
+         
         public ActionResult OzellikTipleri()
         {
             return View(Context.Baglanti.OzellikTip.ToList());
         }
-        [Authorize]
+         
         public ActionResult OzellikTipEkle()
         {
-            return View(Context.Baglanti.Kategori.ToList());
+            ViewBag.Kategoriler = Context.Baglanti.Kategori.ToList();
+            return View();
         }
-        [Authorize]
+         
         [HttpPost]
         public ActionResult OzellikTipEkle(OzellikTip ot)
         {
@@ -303,17 +304,36 @@ namespace HTSTicaret.WebUI.Controllers
             Context.Baglanti.SaveChanges();
             return RedirectToAction("OzellikTipleri");
         }
-        [Authorize]
+        public ActionResult OzellikTipSil(int id, OzellikDeger urn)
+        {
+            var tp=Context.Baglanti.OzellikTip.FirstOrDefault(k => k.Id == id);
+            if (tp!=null)
+            {
+                var exist=Context.Baglanti.UrunOzellik.FirstOrDefault(k => k.OzellikTipID==id);
+                if (exist==null)
+                {
+                    Context.Baglanti.OzellikTip.Remove(tp);
+                    Context.Baglanti.SaveChanges();
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            return RedirectToAction("OzellikTipleri");
+        }
+         
         public ActionResult OzellikDegerleri()
         {
             return View(Context.Baglanti.OzellikDeger.ToList());
         }
-        [Authorize]
+         
         public ActionResult OzellikDegerEkle()
         {
-            return View(Context.Baglanti.OzellikTip.ToList());
+            ViewBag.OzellikTip = Context.Baglanti.OzellikTip;
+            return View();
         }
-        [Authorize]
+         
         [HttpPost]
         public ActionResult OzellikDegerEkle(OzellikDeger od)
         {
@@ -321,12 +341,32 @@ namespace HTSTicaret.WebUI.Controllers
             Context.Baglanti.SaveChanges();
             return RedirectToAction("OzellikDegerleri");
         }
-        [Authorize]
+        
+        public ActionResult OzellikDegerSil(int id,UrunOzellik urn )
+        {
+            var dg=Context.Baglanti.OzellikDeger.FirstOrDefault(x=>x.Id==id);
+            if (dg!=null)
+            {
+                var exist = Context.Baglanti.UrunOzellik.FirstOrDefault(x => x.OzellikDegerID == id);
+                if (exist==null)
+                {
+                    Context.Baglanti.OzellikDeger.Remove(dg);
+                    Context.Baglanti.SaveChanges();
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            return RedirectToAction("OzellikDegerleri");
+        }
+
+         
         public ActionResult UrunOzellikleri()
         {
             return View(Context.Baglanti.UrunOzellik.ToList());
         }
-        [Authorize]
+         
         public ActionResult UrunOzellikSil(int urunId, int tipId, int degerId)
         {
             UrunOzellik uo = Context.Baglanti.UrunOzellik.FirstOrDefault(x => x.UrunID == urunId && x.OzellikTipID == tipId && x.OzellikDegerID == degerId);
@@ -334,13 +374,13 @@ namespace HTSTicaret.WebUI.Controllers
             Context.Baglanti.SaveChanges();
             return RedirectToAction("UrunOzellikleri");
         }
-        [Authorize]
+         
         public ActionResult UrunOzellikEkle()
         {
 
             return View(Context.Baglanti.Urun.ToList());
         }
-        [Authorize]
+         
         public PartialViewResult UrunOzellikTipWidget(int? katId)
         {
             if (katId!=null)
@@ -354,7 +394,7 @@ namespace HTSTicaret.WebUI.Controllers
                 return PartialView(data);
             }
         }
-        [Authorize]
+         
         public PartialViewResult urunOzellikDegerWidget(int? tipId)
         {
             if (tipId!=null) 
@@ -368,7 +408,7 @@ namespace HTSTicaret.WebUI.Controllers
                 return PartialView(data);
             }
         }
-        [Authorize]
+         
         [HttpPost]
         public ActionResult UrunOzellikEkle(UrunOzellik uo)
         {
@@ -376,24 +416,16 @@ namespace HTSTicaret.WebUI.Controllers
             Context.Baglanti.SaveChanges();
             return RedirectToAction("UrunOzellikleri");
         }
-        [Authorize]
+         
         public ActionResult UrunResimEkle(int id)
         {
             var data =Context.Baglanti.Urun.FirstOrDefault(x => x.Id == id);
             return View(data);
         }
-        [Authorize]
+         
         public ActionResult SliderResimleri()
         {
             return View();
-        }
-        [Authorize]
-        public ActionResult SoapResult()
-        {
-
-            var webServiceProxy = new WebServiceProxy();
-            string soapResult = webServiceProxy.GetData("input");
-            return View(soapResult);
         }
 
         //[HttpPost]

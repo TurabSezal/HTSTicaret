@@ -34,8 +34,8 @@
                 <div class="col-md-6">
                     <br />
                     <ul class="header-middle-account">
-                            <li><a href="/Security/Hesabim"><i class="icon-330" title="Hesabım"></i> Hesabım</a></li>
-                            <li><a href="/Security/Logout"><i class="icon-351" title="Giriş"></i>Çıkış Yap</a></li>
+                        <li><a href="/Security/Hesabim"><i class="icon-330" title="Hesabım"></i> Hesabım</a></li>
+                        <li><a href="/Security/Logout"><i class="icon-351" title="Giriş"></i>Çıkış Yap</a></li>
                         @*<li><a href="/Security/Login"><i class="icon-330" title="Hesabım"></i> Griş Yap</a></li>*@
 
                     </ul>
@@ -176,7 +176,24 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-
+    <script>
+    $(document).ready(function () {
+        $(".remove-button").on("click", function () {
+            var urunId = $(this).data("urunid");
+            $.ajax({
+                url: '@Url.Action("SepettenCikar", "Home")',
+                type: 'POST',
+                data: { id: urunId },
+                success: function (result) {
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+    });
+    </script>
 </body>
 
 </html>

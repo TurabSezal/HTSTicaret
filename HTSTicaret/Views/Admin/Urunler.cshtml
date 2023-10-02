@@ -49,8 +49,8 @@
                         <tr class="">
                             <td>@urun.Adi</td>
                             <td>@urun.Aciklama</td>
-                            <td>@urun.AlisFiyati</td>
-                            <td class="center">@urun.SatisFiyati</td>
+                            <td>@(((decimal)urun.AlisFiyati).ToString("C"))</td>
+                            <td class="center">@(((decimal)urun.SatisFiyati).ToString("C"))</td>
                             <td class="center">@urun.Kategori.Adi</td>
                             <td class="center">@urun.Marka.Adi</td>
 
@@ -65,7 +65,7 @@
                                 @if (urun.Resim != null)
                                 {
                                     <a class="fancybox" rel="group"
-                                       href="@urun.Resim.OrtaYol">
+                                       href="@urun.Resim.OrtaYol" target="_blank">
                                         <i class="icon-eye-open"></i>
                                         Göster
                                     </a>

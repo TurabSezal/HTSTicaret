@@ -5,6 +5,7 @@ using HTSTicaret.WebUI.App_Classes;
 
 namespace HTSTicaret.WebUI.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         public ActionResult Index()

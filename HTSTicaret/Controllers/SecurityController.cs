@@ -29,12 +29,11 @@ namespace HTSTicaret.Controllers
             return RedirectToAction("Login");
         }
 
-       
-
         public ActionResult Login()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Login(Kargo t)
         {
@@ -58,6 +57,11 @@ namespace HTSTicaret.Controllers
                 return View();
             }
             
+        }
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login");
         }
     }
 }

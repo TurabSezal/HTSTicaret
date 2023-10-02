@@ -2206,6 +2206,8 @@
     <Content Include="Views\Home\MarkaUrunler.cshtml" />
     <Content Include="Views\Home\KategoriUrunler.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Admin\OzellikTipSil.cshtml" />
+    <Content Include="Views\Admin\OzellikDegerSil.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

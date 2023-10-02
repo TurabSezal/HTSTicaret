@@ -4,7 +4,6 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-@model IEnumerable<HTSTicaret.WebUI.Models.OzellikTip>
 
 <br/><br/>
 <br/><br/>
@@ -18,7 +17,7 @@
             <div class="panel-body">
                 <form action="/Admin/OzellikDegerEkle" class="form-horizontal tasi-form" method="post">
                     <select class="form-control m-bot15" name="OzellikTipID">
-                        @foreach (var tip in Model)
+                        @foreach (var tip in ViewBag.OzellikTip)
                         {
                             <option value="@tip.Id">
                                 @tip.Adi
