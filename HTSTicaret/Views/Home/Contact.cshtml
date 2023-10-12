@@ -6,31 +6,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>
-        function initMap() {
-            // Haritanın gösterileceği div'i belirtin
-            var mapDiv = document.getElementById('map');
-
-            // Haritanın başlangıç koordinatlarını belirtin
-            var map = new google.maps.Map(mapDiv, {
-                center: { lat: 38.491511, lng: 27.706301 },
-                zoom: 18,
-                // Haritanın yüksekliğini ve genişliğini belirtin
-                height: 600,
-                width: 800
-            });
-        }
-    </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSNW7Pt4PQZ7qxeT6rrTAQoBqpcw51KBE&libraries=places"></script>
     <meta charset="utf-8" />
-    <title>MTM</title>
+    <title>HTS</title>
     <meta name="description" content="Here goes description" />
     <meta name="author" content="author name" />
-    <link rel="shortcut icon" href="/content/front/files/images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="~/htsresim/favicon.ico" type="image/x-icon" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,700italic,400,600,700,800" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/content/front/files/css/bootstrap.css" />
     <link rel="stylesheet" href="/content/front/files/css/style.css" />
 </head>
@@ -42,7 +25,7 @@
                 <div class="col-md-4">
                     <div class="logo">
                         <a href="~/Home/index">
-                            <img src="~/htsresim/MTM.png" alt="site logo" />
+                            <img src="~/htsresim/logo_transparent.png" style="width:150px;height:60px" alt="site logo" />
                         </a>
                     </div>
                 </div>
@@ -51,11 +34,13 @@
 
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li><a href="/Security/Hesabim"><i class="icon-330" title="Hesabım"></i> Hesabım</a></li>
+                            <li><a href="/Admin/index"><i class="icon-330" title="Panel"></i> Yönetim Paneli</a></li>
                             <li><a href="/Security/Logout"><i class="icon-351" title="Giriş"></i>Çıkış Yap</a></li>
                         }
-
-                        <li><a href="/Security/Login"><i class="icon-330" title="Hesabım"></i> Griş Yap</a></li>
+                        else
+                        {
+                            <li><a href="/Security/Login"><i class="icon-330" title="Hesabım"></i> Griş Yap</a></li>
+                        }
 
                     </ul>
                 </div>
@@ -115,26 +100,15 @@
 
     <div class="content">
         <div class="container">
-            <div class="site-title"><div class="site-inside"><span>Ekibimiz</span></div></div>
+            <div class="site-title"><div class="site-inside"><span>İletişim</span></div></div>
             <div class="our-team" data-tesla-plugin="slider" data-tesla-item=".slide" data-tesla-next=".slide-right" data-tesla-prev=".slide-left" data-tesla-container=".slide-wrapper" data-tesla-autoplay="false">
 
 
                 <li class="slide">
                     <div class="row">
                         <div class="col-md-5">
-                            <div class="our-team-member">
-                                <img src="~/htsresim/logots.png" alt="our team meber" />
-                            </div>
-                        </div>
-                        <div class="col-md-7">
+                        </div>  
                             <div class="our-team-member-details">
-                                <h3>Hüseyin Turab Sezal</h3>
-                                <h4>CEO</h4>
-                                <ul class="our-team-member-socials">
-                                    <li><a href="#"><i class="icon-160" title="161"></i></a></li>
-                                    <li><a href="#"><i class="icon-169" title="161"></i></a></li>
-                                    <li><a href="#"><i class="icon-163" title="161"></i></a></li>
-                                </ul>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim deniam, nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim deniam, nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Duis aute irure dolor in reprehenderit in voluptate velit esse  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                             </div>
@@ -144,9 +118,6 @@
             </div>
             <div class="box" id="map"></div>
             <div class="content">
-                <script>
-                    initMap();
-                </script>
             </div>
         </div>
         <div class="footer">
@@ -174,8 +145,11 @@
             <div class="container">
                 <div class="mini-footer">
                     <div class="row">
-                        <div class="col-md-6">
-                            Copyright 2022 MTM &nbsp;  &nbsp;  &nbsp; Designed by <a href="#">HTS</a>
+                        <div class="text-center">
+                            2023  &copy; All rights reserved.Made by HTS.
+                            <a href="#" class="go-top">
+                                <i class="icon-angle-up"></i>
+                            </a>
                         </div>
                     </div>
                 </div>

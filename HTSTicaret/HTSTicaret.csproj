@@ -1806,7 +1806,7 @@
     <Content Include="Content\web\w3layouts-License.txt" />
     <Content Include="Global.asax" />
     <Content Include="htsimgslider\layerslider3.jpg" />
-    <Content Include="htsresim\favicon.png" />
+    <Content Include="htsresim\favicon.ico" />
     <Content Include="htsresim\logo_transparent.png" />
     <Content Include="htsimgslider\slider-2-1.jpg" />
     <Content Include="htsimgslider\sliderr.jpg" />

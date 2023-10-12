@@ -30,7 +30,12 @@
 
                                 </div>
                                 <div class="product-details">
-                                    <h1><a href="/Home/UrunDetay/@urun.Adi">@urun.Adi</a></h1>
+                                    @{
+                                        int maxKarakterSayisi1 = 26;
+                                        string kisaltmaNoktalari1 = "..."; // Kısaltmanın sonuna eklemek istediğiniz üç nokta
+                                        string kisaltilmisad = urun.Adi.Length > maxKarakterSayisi1 ? urun.Adi.Substring(0, maxKarakterSayisi1) + kisaltmaNoktalari1 : urun.Adi;
+                                    }
+                                    <h1><a href="/Home/UrunDetay/@urun.Adi">@kisaltilmisad</a></h1>
                                     @{
                                         int maxKarakterSayisi = 110;
                                         string kisaltmaNoktalari = "..."; // Kısaltmanın sonuna eklemek istediğiniz üç nokta

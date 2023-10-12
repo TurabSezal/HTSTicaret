@@ -59,3 +59,24 @@
         </div>
     </div>
 </section>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var deleteButtons = document.querySelectorAll('.delete');
+        deleteButtons.forEach(function (button) {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                var urunId = this.getAttribute('href').split('/').pop();
+                confirmUrunSil(urunId);
+            });
+        });
+    });
+
+    function confirmUrunSil(urunId) {
+        var result = confirm("Kategoriyi silmek istediğinize emin misiniz?");
+        if (result) {
+            window.location.href = '/admin/KategoriSil/' + urunId;
+        } else {
+            alert("Kategori silme işlemi iptal edildi.");
+        }
+    }
+</script>

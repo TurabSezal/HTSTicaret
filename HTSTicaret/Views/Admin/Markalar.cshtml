@@ -90,7 +90,28 @@
 
 <script src="/content/templates/admintemplates/flatlab/admin/template_content/assets/fancybox/source/jquery.fancybox.js"></script>
 
-<script type="text/javascript">
+@*<script type="text/javascript">
     $(function () {
         jQuery(".fancybox").fancybox();
-    });</script>
+    });</script>*@
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var deleteButtons = document.querySelectorAll('.delete');
+        deleteButtons.forEach(function (button) {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                var urunId = this.getAttribute('href').split('/').pop();
+                confirmUrunSil(urunId);
+            });
+        });
+    });
+
+    function confirmUrunSil(urunId) {
+        var result = confirm("Markayı silmek istediğinize emin misiniz?");
+        if (result) {
+            window.location.href = '/admin/MarkaSil/' + urunId;
+        } else {
+            alert("Marka silme işlemi iptal edildi.");
+        }
+    }
+</script>

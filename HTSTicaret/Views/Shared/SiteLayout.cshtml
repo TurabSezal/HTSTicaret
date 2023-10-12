@@ -10,11 +10,9 @@
     <title>HTS TİCARET</title>
     <meta name="description" content="Here goes description" />
     <meta name="author" content="author name" />
-    <link rel="shortcut icon" href="~/htsresim/favicon.png"/>
+    <link rel="shortcut icon" href="~/htsresim/favicon.ico"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,700italic,400,600,700,800" rel="stylesheet" type="/Content/front/files/text/css">
     <link rel="stylesheet" href="/Content/front/files/css/bootstrap.css" />
     <link rel="stylesheet" href="/Content/front/files/css/style.css" />
 </head>
@@ -34,10 +32,15 @@
                 <div class="col-md-6">
                     <br />
                     <ul class="header-middle-account">
-                        <li><a href="/Security/Hesabim"><i class="icon-330" title="Hesabım"></i> Hesabım</a></li>
-                        <li><a href="/Security/Logout"><i class="icon-351" title="Giriş"></i>Çıkış Yap</a></li>
-                        @*<li><a href="/Security/Login"><i class="icon-330" title="Hesabım"></i> Griş Yap</a></li>*@
-
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li><a href="/Admin/index"><i class="icon-330" title="Panel"></i> Yönetim Paneli</a></li>
+                            <li><a href="/Security/Logout"><i class="icon-351" title="Giriş"></i>Çıkış Yap</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="/Security/Login"><i class="icon-330" title="Hesabım"></i> Griş Yap</a></li>
+                        }
                     </ul>
                 </div>
                 <div class="clear"></div>
@@ -153,8 +156,11 @@
         <div class="container">
             <div class="mini-footer">
                 <div class="row">
-                    <div class="col-md-6">
-                        Copyright 2022 MTM &nbsp;  &nbsp;  &nbsp; Designed by <a href="#">HTS</a>
+                    <div class="text-center">
+                        2023  &copy; All rights reserved.Made by HTS.
+                        <a href="#" class="go-top">
+                            <i class="icon-angle-up"></i>
+                        </a>
                     </div>
                 </div>
             </div>
